@@ -1,0 +1,7 @@
+.DS_Store
+out/
+*.class
+registrationClient/registrationclient/node_modules
+.idea/
+target
+.mvn

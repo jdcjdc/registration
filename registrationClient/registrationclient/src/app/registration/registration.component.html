@@ -1,0 +1,24 @@
+<h1>{{title}}</h1>
+<div>
+  <label>First Name:</label>
+  <input type="text" class="form-control" [(ngModel)]="firstName">
+</div>
+<div>
+  <label>Last Name:</label>
+  <input type="text" class="form-control" [(ngModel)]="lastName">
+</div>
+<div>
+  <label>email</label>
+  <input type="text" class="form-control" [(ngModel)]="emailAddress">
+</div>
+<div>
+  <label>email</label>
+  <input type="text" class="form-control" [(ngModel)]="password">
+</div>
+<div>
+  <label>email</label>
+  <input type="text" class="form-control" [(ngModel)]="confirmPassword">
+</div>
+<div>
+  <button class="btn btn-primary" (click)="saveRegistrationData()">save registration data</button>
+</div>
