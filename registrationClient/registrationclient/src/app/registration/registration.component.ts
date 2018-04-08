@@ -18,6 +18,8 @@ export class RegistrationComponent implements OnInit {
   ngOnInit() {
   }
 
-  saveRegistrationData()
+  saveRegistrationData() {
+
+  }
 
 }
