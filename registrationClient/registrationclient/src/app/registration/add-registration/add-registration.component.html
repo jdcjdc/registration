@@ -1,0 +1,33 @@
+<div class="col-md-6">
+  <h2 class="text-center">Add Registration</h2>
+  <form>
+    <div class="form-group">
+      <label for="title">Title:</label>
+      <input type="title" [(ngModel)]="registration.title" placeholder="Title" name="title" class="form-control" id="title">
+    </div>
+
+    <div class="form-group">
+      <label for="firstName">First Name:</label>
+      <input [(ngModel)]="registration.firstName" placeholder="First Name" name="firstName" class="form-control" id="firstName">
+    </div>
+
+    <div class="form-group">
+      <label for="lastName">Last Name:</label>
+      <input [(ngModel)]="registration.lastName" placeholder="Last name" name="lastName" class="form-control" id="lastName">
+    </div>
+    <div class="form-group">
+      <label for="emailAddress">Email address:</label>
+      <input [(ngModel)]="registration.emailAddress" placeholder="Email address" name="emailAddress" class="form-control" id="emailAddress">
+    </div>
+    <div class="form-group">
+      <label for="password">Last Name:</label>
+      <input [(ngModel)]="registration.password" placeholder="Password" name="password" class="form-control" id="password">
+    </div>
+    <div class="form-group">
+      <label for="confirmPassword">Confirm password:</label>
+      <input [(ngModel)]="registration.confirmPassword" placeholder="Confirm password" name="confirmPassword" class="form-control" id="confirmPassword">
+    </div>
+
+    <button class="btn btn-success" (click)="createRegistration()">Create</button>
+  </form>
+</div>

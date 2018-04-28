@@ -1,24 +1,51 @@
-<h1>{{title}}</h1>
-<div>
-  <label>First Name:</label>
-  <input type="text" class="form-control" [(ngModel)]="firstName">
+<div class="col-md-6">
+  <h2> Registration Details</h2>
+
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th class="hidden">Id</th>
+      <th>Title</th>
+      <th>FistName</th>
+      <th>LastName</th>
+      <th>EmailAddress</th>
+      <th>Password</th>
+      <th>ConfirmPassword</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let registration of registrations">
+      <td class="hidden"></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><button class="btn btn-danger" (click)="deleteRegistration(registration)"> Delete Registration</button></td>
+    </tr>
+    </tbody>
+  </table>
 </div>
-<div>
-  <label>Last Name:</label>
-  <input type="text" class="form-control" [(ngModel)]="lastName">
-</div>
-<div>
-  <label>email</label>
-  <input type="text" class="form-control" [(ngModel)]="emailAddress">
-</div>
-<div>
-  <label>email</label>
-  <input type="text" class="form-control" [(ngModel)]="password">
-</div>
-<div>
-  <label>email</label>
-  <input type="text" class="form-control" [(ngModel)]="confirmPassword">
-</div>
-<div>
-  <button class="btn btn-primary" (click)="saveRegistrationData()">save registration data</button>
-</div>
+
+<!--<h1>{{title}}</h1>-->
+<!--<div>-->
+  <!--<label>First Name:</label>-->
+  <!--<input type="text" class="form-control" [(ngModel)]="firstName">-->
+<!--</div>-->
+<!--<div>-->
+  <!--<label>Last Name:</label>-->
+  <!--<input type="text" class="form-control" [(ngModel)]="lastName">-->
+<!--</div>-->
+<!--<div>-->
+  <!--<label>email</label>-->
+  <!--<input type="text" class="form-control" [(ngModel)]="emailAddress">-->
+<!--</div>-->
+<!--<div>-->
+  <!--<label>email</label>-->
+  <!--<input type="text" class="form-control" [(ngModel)]="password">-->
+<!--</div>-->
+<!--<div>-->
+  <!--<label>email</label>-->
+  <!--<input type="text" class="form-control" [(ngModel)]="confirmPassword">-->
+<!--</div>-->
+<!--<div>-->
+  <!--<button class="btn btn-primary" (click)="saveRegistrationData()">save registration data</button>-->
+<!--</div>-->

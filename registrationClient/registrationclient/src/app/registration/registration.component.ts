@@ -6,20 +6,24 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./registration.component.css']
 })
 export class RegistrationComponent implements OnInit {
-  title = "Registration";
-  firstName = 'first name';
-  lastName = 'last name';
-  emailAddress = 'email address';
-  password = 'password';
-  confirmPassword = 'confirm password';
 
-  constructor() { }
+  registrations: Registration[];
+
+  constructor(private router: Router, private registrationService: RegistrationService) {
+  }
 
   ngOnInit() {
+    this.registrationService.getRegistrations()
+      .subscribe( data => {
+        this.registrations = data;
+      });
   }
 
-  saveRegistrationData() {
-
-  }
+  deleteUser(registration: Registration): void {
+    this.registrationService.deleteRegistration(registration)
+      .subscribe( data => {
+        this.registrations = this.registrations.filter(u => u !== registration);
+      })
+  };
 
 }
