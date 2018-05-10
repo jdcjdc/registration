@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
-import {Registration} from "../registration.model";
-import {RegistrationService} from "../registration.service";
+import {Registration} from "../models/registration.model";
+import {RegistrationService} from "./registration.service";
 
 @Component({
   selector: 'app-add-registration',
@@ -10,7 +10,7 @@ import {RegistrationService} from "../registration.service";
 })
 export class AddRegistrationComponent implements OnInit {
 
-  registration: Registration = new Registration();
+  registration: Registration; // jdc todo:  = new Registration();
 
   constructor(private router: Router, private registrationService: RegistrationService) { }
 
@@ -20,7 +20,7 @@ export class AddRegistrationComponent implements OnInit {
   createRegistration(): void {
     this.registrationService.createRegistration(this.registration)
       .subscribe( data => {
-        alert("User created successfully.");
+        alert("Registration created successfully.");
       });
 
   };

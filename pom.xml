@@ -7,7 +7,6 @@
 	<artifactId>demo</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
-
 	<name>demo</name>
 	<description>Demo project for Spring Boot</description>
 
@@ -22,6 +21,17 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
+
+		<!-- javax jsp -->
+		<javax.servlet.jsp-api.version>2.3.2-b01</javax.servlet.jsp-api.version>
+		<jstl.version>1.2</jstl.version>
+
+		<!-- guava -->
+		<guava.version>20.0</guava.version>
+
+		<passay.version>1.0</passay.version>
+		<rest-assured.version>2.4.0</rest-assured.version>
+
 	</properties>
 
 	<dependencies>
@@ -66,6 +76,47 @@
 			<version>2.6</version>
 		</dependency>
 
+		<!-- Spring Data JPA dependencies -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+
+		<!-- DB dependencies -->
+
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>commons-dbcp</groupId>
+			<artifactId>commons-dbcp</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<version>${guava.version}</version>
+		</dependency>
+
+		<!-- Password Validation -->
+
+		<dependency>
+			<groupId>org.passay</groupId>
+			<artifactId>passay</artifactId>
+			<version>${passay.version}</version>
+		</dependency>
+
+
+		<!-- 2fa -->
+
+		<dependency>
+			<groupId>org.jboss.aerogear</groupId>
+			<artifactId>aerogear-otp-java</artifactId>
+			<version>1.0.0</version>
+			<scope>compile</scope>
+		</dependency>
+
+
 	</dependencies>
 
 	<build>
@@ -76,6 +127,5 @@
 			</plugin>
 		</plugins>
 	</build>
-
 
 </project>

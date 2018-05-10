@@ -1,33 +1,61 @@
 package com.example.demo.dto;
 
-import org.apache.commons.lang.builder.ToStringBuilder;
+import com.example.demo.validation.PasswordMatches;
+import com.example.demo.validation.ValidEmail;
+import com.example.demo.validation.ValidPassword;
+import org.apache.commons.lang.builder.ReflectionToStringBuilder;
 
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
+
+@PasswordMatches
 public class UserDto {
     @NotNull
-    @NotEmpty
+    @Size(min = 1, message = "{Size.userDto.firstName}")
     private String firstName;
 
     @NotNull
-    @NotEmpty
+    @Size(min = 1, message = "{Size.userDto.lastName}")
     private String lastName;
 
-    @NotNull
-    @NotEmpty
+    @ValidPassword
     private String password;
-    private String matchingPassword;
 
     @NotNull
-    @NotEmpty
+    @Size(min = 1)
+    private String matchingPassword;
+
+    @ValidEmail
+    @NotNull
+    @Size(min = 1, message = "{Size.userDto.email}")
     private String email;
+
+    private boolean isUsing2FA;
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(final String email) {
+        this.email = email;
+    }
+
+    private Integer role;
+
+    public Integer getRole() {
+        return role;
+    }
+
+    public void setRole(final Integer role) {
+        this.role = role;
+    }
 
     public String getFirstName() {
         return firstName;
     }
 
-    public void setFirstName(String firstName) {
+    public void setFirstName(final String firstName) {
         this.firstName = firstName;
     }
 
@@ -35,7 +63,7 @@ public class UserDto {
         return lastName;
     }
 
-    public void setLastName(String lastName) {
+    public void setLastName(final String lastName) {
         this.lastName = lastName;
     }
 
@@ -43,7 +71,7 @@ public class UserDto {
         return password;
     }
 
-    public void setPassword(String password) {
+    public void setPassword(final String password) {
         this.password = password;
     }
 
@@ -51,21 +79,25 @@ public class UserDto {
         return matchingPassword;
     }
 
-    public void setMatchingPassword(String matchingPassword) {
+    public void setMatchingPassword(final String matchingPassword) {
         this.matchingPassword = matchingPassword;
     }
 
-    public String getEmail() {
-        return email;
+    public boolean isUsing2FA() {
+        return isUsing2FA;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setUsing2FA(boolean isUsing2FA) {
+        this.isUsing2FA = isUsing2FA;
     }
 
     @Override
     public String toString() {
-        return
-                ToStringBuilder.reflectionToString(this);
+        // jdc todo ORI:
+//        final StringBuilder builder = new StringBuilder();
+//        builder.append("UserDto [firstName=").append(firstName).append(", lastName=").append(lastName).append(", password=").append(password).append(", matchingPassword=").append(matchingPassword).append(", email=").append(email).append(", isUsing2FA=")
+//                .append(isUsing2FA).append(", role=").append(role).append("]");
+//        return builder.toString();
+        return ReflectionToStringBuilder.toString(this);
     }
 }

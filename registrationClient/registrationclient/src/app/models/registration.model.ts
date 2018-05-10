@@ -14,5 +14,4 @@ export class Registration {
     this.password = password;
     this.confirmPassword = confirmPassword;
   }
-
 }
