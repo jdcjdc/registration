@@ -1,6 +1,6 @@
 package com.example.demo.security.google2fa;
 
-import com.example.demo.domain.User;
+import com.example.demo.persistence.domain.User;
 import com.example.demo.repository.UserRepository;
 import org.jboss.aerogear.security.otp.Totp;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,28 +1,13 @@
 package com.example.demo.service;
 
-import com.example.demo.domain.PasswordResetToken;
-import com.example.demo.domain.User;
-import com.example.demo.domain.VerificationToken;
+import com.example.demo.persistence.domain.PasswordResetToken;
+import com.example.demo.persistence.domain.User;
+import com.example.demo.persistence.domain.VerificationToken;
 import com.example.demo.dto.UserDto;
-import org.baeldung.persistence.model.PasswordResetToken;
-import org.baeldung.persistence.model.User;
-import org.baeldung.persistence.model.VerificationToken;
-import org.baeldung.web.dto.UserDto;
-import org.baeldung.web.error.UserAlreadyExistException;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.session.SessionRegistry;
-import org.springframework.security.crypto.password.PasswordEncoder;
+import com.example.demo.web.error.UserAlreadyExistException;
 
 import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
-import java.util.Arrays;
-import java.util.Calendar;
 import java.util.List;
-import java.util.UUID;
-import java.util.stream.Collectors;
 
 public interface UserService {
 

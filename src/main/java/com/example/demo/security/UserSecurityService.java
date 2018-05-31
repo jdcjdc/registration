@@ -1,7 +1,7 @@
 package com.example.demo.security;
 
-import com.example.demo.domain.PasswordResetToken;
-import com.example.demo.domain.User;
+import com.example.demo.persistence.domain.PasswordResetToken;
+import com.example.demo.persistence.domain.User;
 import com.example.demo.repository.PasswordResetTokenRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;

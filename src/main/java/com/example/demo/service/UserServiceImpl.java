@@ -1,10 +1,11 @@
 package com.example.demo.service;
 
-import com.example.demo.domain.PasswordResetToken;
-import com.example.demo.domain.User;
-import com.example.demo.domain.VerificationToken;
+import com.example.demo.persistence.domain.PasswordResetToken;
+import com.example.demo.persistence.domain.User;
+import com.example.demo.persistence.domain.VerificationToken;
 import com.example.demo.dto.UserDto;
 import com.example.demo.repository.*;
+import com.example.demo.web.error.UserAlreadyExistException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -15,10 +16,7 @@ import org.springframework.stereotype.Service;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
-import java.util.Arrays;
-import java.util.Calendar;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -140,7 +138,10 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User getUserByID(final long id) {
-        return userRepository.findOne(id);
+        // ,jdc todo added, solved Exception
+        User user = userRepository.getOne(id);
+        return user;
+//        return userRepository.findOne(id);
     }
 
     @Override

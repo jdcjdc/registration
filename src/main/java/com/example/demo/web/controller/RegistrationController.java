@@ -1,13 +1,23 @@
 package com.example.demo.web.controller;
 
+import com.example.demo.persistence.domain.Privilege;
+import com.example.demo.persistence.domain.User;
+import com.example.demo.persistence.domain.VerificationToken;
+import com.example.demo.dto.PasswordDto;
+import com.example.demo.dto.UserDto;
+import com.example.demo.registration.listener.OnRegistrationCompleteEvent;
 import com.example.demo.security.SecurityUserService;
 import com.example.demo.service.UserService;
+import com.example.demo.util.GenericResponse;
+import com.example.demo.web.error.InvalidOldPasswordException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.context.MessageSource;
 import org.springframework.core.env.Environment;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -52,8 +62,9 @@ public class RegistrationController {
     @Autowired
     private Environment env;
 
-    @Autowired
-    private AuthenticationManager authenticationManager;
+    // jdc todo removed, because never used and autowiring fails
+//    @Autowired
+//    private AuthenticationManager authenticationManager;
 
     public RegistrationController() {
         super();
@@ -191,13 +202,14 @@ public class RegistrationController {
         }
     }
 
-    public void authWithAuthManager(HttpServletRequest request, String username, String password) {
-        UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(username, password);
-        authToken.setDetails(new WebAuthenticationDetails(request));
-        Authentication authentication = authenticationManager.authenticate(authToken);
-        SecurityContextHolder.getContext().setAuthentication(authentication);
-        // request.getSession().setAttribute(HttpSessionSecurityContextRepository.SPRING_SECURITY_CONTEXT_KEY, SecurityContextHolder.getContext());
-    }
+    // jdc todo removed because never used and authenticationManager is not wired
+//    public void authWithAuthManager(HttpServletRequest request, String username, String password) {
+//        UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(username, password);
+//        authToken.setDetails(new WebAuthenticationDetails(request));
+//        Authentication authentication = authenticationManager.authenticate(authToken);
+//        SecurityContextHolder.getContext().setAuthentication(authentication);
+//        // request.getSession().setAttribute(HttpSessionSecurityContextRepository.SPRING_SECURITY_CONTEXT_KEY, SecurityContextHolder.getContext());
+//    }
 
     public void authWithoutPassword(User user) {
         List<Privilege> privileges = user.getRoles().stream().map(role -> role.getPrivileges()).flatMap(list -> list.stream()).distinct().collect(Collectors.toList());
